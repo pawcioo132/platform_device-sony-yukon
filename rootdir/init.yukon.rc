@@ -72,6 +72,11 @@ on fs
     setprop ro.crypto.fuse_sdcard true
     write /proc/sys/vm/page-cluster 0
     write /sys/kernel/boot_adsp/boot 1
+    
+    # Configure and enable KSM
+    write /sys/kernel/mm/ksm/pages_to_scan 100
+    write /sys/kernel/mm/ksm/sleep_millisecs 500
+    write /sys/kernel/mm/ksm/run 1
 
 on post-fs-data
     # MSM specific files that need to be created on /data
